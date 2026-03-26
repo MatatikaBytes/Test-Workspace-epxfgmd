@@ -1,0 +1,8 @@
+version: pipelines/v0.1
+label: TikTok Ads
+timeout: 0
+max_retries: 0
+data_components:
+- tap-tiktok
+- Warehouse
+- dbt
