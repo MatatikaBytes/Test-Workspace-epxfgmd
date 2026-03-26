@@ -1,0 +1,50 @@
+{
+  "plugin_type": "extractors",
+  "name": "tap-tiktok",
+  "namespace": "tap_tiktok",
+  "variant": "matatika",
+  "label": "TikTok Ads",
+  "docs": "https://www.matatika.com/data-details/tap-tiktok/",
+  "repo": "https://github.com/Matatika/tap-tiktok",
+  "pip_url": "git+https://github.com/Matatika/tap-tiktok.git@v1.0.0",
+  "description": "TikTok Ads is a social media advertising platform for businesses to promote their products or services on TikTok.\n\nTikTok Ads allows businesses to create and run ads on the popular social media platform TikTok, reaching a large and engaged audience of users. With a variety of ad formats available, including in-feed ads, brand takeovers, and hashtag challenges, businesses can tailor their advertising strategy to their specific goals and target audience. TikTok Ads also provides detailed analytics and targeting options to help businesses optimize their campaigns and reach the right audience.",
+  "logo_url": "/assets/logos/extractors/tiktok.png",
+  "capabilities": [
+    "catalog",
+    "about",
+    "discover",
+    "state",
+    "stream-maps"
+  ],
+  "settings": [
+    {
+      "name": "api_key",
+      "kind": "string",
+      "label": "API Key",
+      "description": "A unique identifier used to authenticate and authorize access to the TikTok Ads API.",
+      "hidden": false,
+      "sensitive": true,
+      "required": "true",
+      "protected": false
+    },
+    {
+      "name": "advertiser_id",
+      "kind": "string",
+      "label": "Advertiser ID",
+      "description": "A unique identifier for the advertiser's account that is used to retrieve and manage their ad campaigns.",
+      "hidden": false,
+      "sensitive": false,
+      "required": "true",
+      "protected": false
+    },
+    {
+      "name": "start_date",
+      "kind": "string",
+      "label": "Start date",
+      "description": "The date from which the ad campaign data should be retrieved.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    }
+  ]
+}

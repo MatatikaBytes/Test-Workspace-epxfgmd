@@ -10,6 +10,9 @@ plugins:
   - name: tap-quickbooks
     variant: matatika
     pip_url: git+https://github.com/Matatika/tap-quickbooks.git@v0.1.0
+  - name: tap-tiktok
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/tap-tiktok.git@v1.0.0
   loaders:
   - name: target-postgres
     variant: matatika
