@@ -6,45 +6,123 @@
   "label": "TikTok Ads",
   "docs": "https://www.matatika.com/data-details/tap-tiktok/",
   "repo": "https://github.com/Matatika/tap-tiktok",
-  "pip_url": "git+https://github.com/Matatika/tap-tiktok.git@v1.0.0",
+  "pip_url": "git+https://github.com/Matatika/tap-tiktok.git@v1.1.0",
   "description": "TikTok Ads is a social media advertising platform for businesses to promote their products or services on TikTok.\n\nTikTok Ads allows businesses to create and run ads on the popular social media platform TikTok, reaching a large and engaged audience of users. With a variety of ad formats available, including in-feed ads, brand takeovers, and hashtag challenges, businesses can tailor their advertising strategy to their specific goals and target audience. TikTok Ads also provides detailed analytics and targeting options to help businesses optimize their campaigns and reach the right audience.",
   "logo_url": "/assets/logos/extractors/tiktok.png",
   "capabilities": [
-    "catalog",
     "about",
+    "catalog",
     "discover",
+    "schema-flattening",
     "state",
     "stream-maps"
   ],
+  "settings_group_validation": [
+    [
+      "advertiser_ids",
+      "start_date",
+      "access_token"
+    ],
+    [
+      "advertiser_ids",
+      "start_date",
+      "client_key",
+      "client_secret",
+      "refresh_token"
+    ],
+    [
+      "advertiser_ids",
+      "start_date",
+      "client_key",
+      "client_secret",
+      "auth_code",
+      "redirect_uri"
+    ]
+  ],
   "settings": [
     {
-      "name": "api_key",
+      "name": "access_token",
       "kind": "string",
-      "label": "API Key",
-      "description": "A unique identifier used to authenticate and authorize access to the TikTok Ads API.",
-      "hidden": false,
+      "label": "Access Token",
+      "description": "Static TikTok API access token. Optional when OAuth settings are provided.",
       "sensitive": true,
-      "required": "true",
-      "protected": false
+      "required": "false"
     },
     {
-      "name": "advertiser_id",
+      "name": "client_key",
       "kind": "string",
-      "label": "Advertiser ID",
-      "description": "A unique identifier for the advertiser's account that is used to retrieve and manage their ad campaigns.",
-      "hidden": false,
+      "label": "Client Key",
+      "description": "TikTok OAuth client key used to exchange or refresh access tokens.",
       "sensitive": false,
-      "required": "true",
-      "protected": false
+      "required": "false"
+    },
+    {
+      "name": "client_secret",
+      "kind": "string",
+      "label": "Client Secret",
+      "description": "TikTok OAuth client secret used to exchange or refresh access tokens.",
+      "sensitive": true,
+      "required": "false"
+    },
+    {
+      "name": "auth_code",
+      "kind": "string",
+      "label": "Authorization Code",
+      "description": "One-time OAuth authorization code used for the initial token exchange.",
+      "sensitive": true,
+      "required": "false"
+    },
+    {
+      "name": "refresh_token",
+      "kind": "string",
+      "label": "Refresh Token",
+      "description": "OAuth refresh token used to renew the access token.",
+      "sensitive": true,
+      "required": "false"
+    },
+    {
+      "name": "redirect_uri",
+      "kind": "string",
+      "label": "Redirect URI",
+      "description": "OAuth redirect URI registered with TikTok. Required when exchanging an auth code.",
+      "sensitive": false,
+      "required": "false"
+    },
+    {
+      "name": "oauth_access_token_url",
+      "kind": "string",
+      "label": "OAuth Access Token URL",
+      "description": "OAuth endpoint used to exchange auth codes and refresh tokens.",
+      "value": "https://open.tiktokapis.com/v2/oauth/token/",
+      "sensitive": false,
+      "required": "false"
+    },
+    {
+      "name": "advertiser_ids",
+      "kind": "array",
+      "label": "Advertiser IDs",
+      "description": "List of Advertiser IDs",
+      "required": "true"
     },
     {
       "name": "start_date",
-      "kind": "string",
-      "label": "Start date",
-      "description": "The date from which the ad campaign data should be retrieved.",
-      "hidden": false,
-      "sensitive": false,
-      "protected": false
+      "kind": "date_iso8601",
+      "label": "Start Date",
+      "description": "The earliest record date to sync"
+    },
+    {
+      "name": "include_deleted",
+      "kind": "boolean",
+      "value": true,
+      "label": "Include Deleted",
+      "description": "If true then deleted status entities will also be returned"
+    },
+    {
+      "name": "lookback",
+      "kind": "integer",
+      "value": 0,
+      "label": "Lookback",
+      "description": "The number of days of data to reload from the current date (ignored if current state of the extractor has a start date earlier than the current date minus number of lookback days)"
     }
   ]
 }
