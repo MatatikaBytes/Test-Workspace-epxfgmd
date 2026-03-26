@@ -6,6 +6,10 @@ environments:
 - name: staging
 - name: prod
 plugins:
+  extractors:
+  - name: tap-quickbooks
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/tap-quickbooks.git@v0.1.0
   loaders:
   - name: target-postgres
     variant: matatika
@@ -18,3 +22,10 @@ plugins:
   - name: files-dbt
     variant: matatika
     pip_url: git+https://github.com/Matatika/files-dbt@v1.3
+  utilities:
+  - name: matatika
+    variant: matatika
+    pip_url: matatika~=1.17.1
+  - name: dbt-artifacts
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/dbt-artifacts-ext.git@v0.1.0
